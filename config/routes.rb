@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
+  get 'questions/index'
+  get 'meals/index'
   get 'sudo/apt'
   get 'sudo/install'
   get 'sudo/testdisk'
@@ -11,4 +14,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+   root to: "meals#index"
+   resources :meals
+   resources :questions
 end
