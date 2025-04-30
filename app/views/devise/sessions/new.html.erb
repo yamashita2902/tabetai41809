@@ -10,46 +10,10 @@
     <%= f.label "パスワード" %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
-  <div class="field">
-    <%= f.label "確認用パスワード" %><br>
-    <%= f.password_field :password_confirmation, autocomplete: "current-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label "生年月日" %><br>
-    <%= f.date_field :birthday %>
-  </div>
-
- 
-
-  <div class="field">
-    <%= f.label "郵便番号" %><br>
-    <%= f.text_field :postal_code %>
-  </div>
-
-  
-  <div class="field">
-    <%= f.label "市町村" %><br>
-    <%= f.text_field :city %>
-  </div>
-
-  <div class="field">
-    <%= f.label "番地" %><br>
-    <%= f.text_field :street_address %>
-  </div>
-
-  <div class="field">
-    <%= f.label "建物名" %><br>
-    <%= f.text_field :building %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
-      <%= f.check_box :remember_me %>
+      <%= f.check_box "記憶する" %>
       <%= f.label :remember_me %>
     </div>
   <% end %>
