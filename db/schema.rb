@@ -10,13 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_29_120158) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_03_031253) do
+  create_table "articles", charset: "utf8mb3", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", charset: "utf8mb3", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", null: false
     t.string "encrypted_password", default: "", null: false
     t.date "birthday", null: false
-    t.integer "gender", null: false
+    t.integer "gender_id", null: false
     t.string "postal_code", null: false
     t.integer "prefecture_id", null: false
     t.string "city", null: false

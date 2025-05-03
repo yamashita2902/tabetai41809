@@ -1,6 +1,16 @@
 <h2>新規登録</h2>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
-<%= form_with(model: resource, as: resource_name, url: session_path(resource_name), local: true) do |f| %>
+<%= form_with(model: resource, as: resource_name, url: registration_path(resource_name), local: true) do |f| %>
    <div class="field">
     <%= f.label "ユーザーネーム" %><br>
     <%= f.text_field  :nickname %>
@@ -25,14 +35,21 @@
     <%= f.date_field :birthday %>
   </div>
 
- 
+  <div class="weight-bold-text">
+    <%= f.label "性別" %><br>
+    <%= f.collection_select(:gender_id, Gender.all, :id, :name, {}, {class:"select-box", id:"gender"}) %>
+  </div>
+
 
   <div class="field">
     <%= f.label "郵便番号" %><br>
     <%= f.text_field :postal_code %>
   </div>
-
-  
+  <div class="weight-bold-text">
+    <%= f.label "都道府県" %><br>
+    <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>
+  </div>
+   
   <div class="field">
     <%= f.label "市町村" %><br>
     <%= f.text_field :city %>
@@ -47,8 +64,6 @@
     <%= f.label "建物名" %><br>
     <%= f.text_field :building %>
   </div>
-
-
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

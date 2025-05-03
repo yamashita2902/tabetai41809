@@ -4,7 +4,7 @@
 | nickname           | string | null: false |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false |
-| gender             | string | null: false |
+| gender_id          | integer | null: false |
 | birthday           | date   | null: false |
 | postal_code        | string | null: false |
 | prefecture_id      | integer | null: false |
@@ -24,8 +24,7 @@
 | category_id        | integer | null: false |
 | prefecture_id      | integer | null: false |
 
-- has_one :purchaserecord
-- belongs_to :user
+-
 
 ## favorites
 | Column             | Type   | Options     |
@@ -39,11 +38,5 @@
 ## questions
 | Column                      | Type   | Options     |
 | --------------------------- | ------ | ----------- |
-| post_code                   | string | null: false |
-| prefecture_id               | integer | null: false |
-| city                        | string | null: false |
-| street                      | string | null: false |
-| building                    | string |             |
-| phone_number                | string | null: false |
-| purchaserecord             | references | null: false foreign_key: true|
-- belongs_to :purchaserecord
+|
+- belongs_to :
