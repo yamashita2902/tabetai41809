@@ -10,7 +10,9 @@
 <body>
   <button class="edit-button">
     <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="User Icon">
-    <%= link_to current_user.nickname, edit_user_registration_path, class: "user-nickname" %>
+     <% if user_signed_in? %>
+      <%= link_to current_user.nickname, edit_user_registration_path, class: "user-nickname" %>
+    <% end %>
   </button>
   <div class="container">
     <h1>TABETAIを見つけよう！</h1>
