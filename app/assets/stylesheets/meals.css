@@ -1,0 +1,46 @@
+.body {
+  font-family: sans-serif;
+  background-color: #fdfbf6;
+  padding: 20px;
+}
+.container {
+  max-width: 400px;
+  margin: auto;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #fff;
+}
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.food-img {
+  width: 100%;
+  border-radius: 8px;
+}
+.food-name {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 10px;
+}
+.btn {
+  display: block;
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  margin: 15px 0;
+  text-align: center;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.shop-list {
+  font-size: 16px;
+}
+.shop-item {
+  margin-bottom: 12px;
+}
