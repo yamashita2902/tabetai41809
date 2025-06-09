@@ -2,53 +2,131 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>食の質問アプリ</title>
+  <title>食の質問アンケート</title>
   <style>
     body {
       font-family: sans-serif;
-      background-color: #fdfbf7;
-      text-align: center;
-      padding: 40px 20px;
-      color: #222;
+      background: #f9f9f9;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
     }
-
     h1 {
-      font-size: 24px;
-      margin-bottom: 40px;
+      text-align: center;
     }
-
-    .options {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 400px;
-      margin: 0 auto;
+    .question {
+      margin-bottom: 20px;
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-
-    .option-button {
-      background-color: #4CAF50;
-      color: white;
-      font-size: 18px;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 12px;
+    .question-title {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .options label {
+      display: block;
+      margin: 4px 0;
       cursor: pointer;
-      transition: background-color 0.3s;
     }
-
-    .option-button:hover {
-      background-color: #45a049;
+    button {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 20px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
     }
   </style>
 </head>
 <body>
-  <h1>今の気分に近いのは？</h1>
-  <div class="options">
-    <button class="option-button">がっつり食べたい</button>
-    <button class="option-button">さっぱりしたい</button>
-    <button class="option-button">甘いものがほしい</button>
-    <button class="option-button">新しいものに挑戦したい</button>
-  </div>
+  <form id="quizForm">
+    <div id="questionsContainer"></div>
+    <button type="submit">送信</button>
+  </form>
+
+  <script>
+    const questions = [
+      {
+        title: "今の気分に近いのは？",
+        options: ["がっつり食べたい", "さっぱりしたい", "甘いものがほしい", "新しいものに挑戦したい"]
+      },
+      {
+        title: "食事の後の予定は？",
+        options: ["すぐに移動がある", "ゆっくりする", "仕事に戻る", "予定はない"]
+      },
+      {
+        title: "今日の気分は？",
+        options: ["テンション高い", "疲れている", "普通", "癒されたい"]
+      },
+      {
+        title: "食べたいもののジャンルは？",
+        options: ["和食", "洋食", "中華", "アジア・エスニック"]
+      },
+      {
+        title: "食べる場所の雰囲気は？",
+        options: ["静か", "にぎやか", "おしゃれ", "気軽"]
+      },
+      {
+        title: "好きな食感は？",
+        options: ["サクサク", "トロトロ", "もちもち", "パリパリ"]
+      },
+      {
+        title: "最近よく食べるものは？",
+        options: ["ご飯もの", "麺類", "パン系", "スイーツ"]
+      },
+      {
+        title: "今の空腹レベルは？",
+        options: ["超お腹すいた", "少しだけ", "軽食でいい", "とりあえず何か"]
+      },
+      {
+        title: "財布の中身は？",
+        options: ["リッチにいく！", "1,000円以内", "安さ重視", "クーポン使いたい"]
+      },
+      {
+        title: "気分転換したい？",
+        options: ["したい", "特にない", "落ち込んでる", "元気を出したい"]
+      }
+    ];
+
+    const container = document.getElementById("questionsContainer");
+
+    questions.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `
+        <div class="question-title">Q${index + 1}. ${q.title}</div>
+        <div class="options">
+          ${q.options.map((opt, i) => `
+            <label>
+              <input type="radio" name="q${index}" value="${opt}" required>
+              ${opt}
+            </label>
+          `).join("")}
+        </div>
+      `;
+      container.appendChild(div);
+    });
+
+    document.getElementById("quizForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const results = [];
+      for (let [key, value] of formData.entries()) {
+        results.push({ question: key, answer: value });
+      }
+      console.log("ユーザーの回答：", results);
+      alert("回答を受け付けました！\n結果に基づいておすすめを提案します。");
+      // 今後、ここでレコメンドAPIに送信などの処理を追加できます
+    });
+  </script>
+
 </body>
 </html>
