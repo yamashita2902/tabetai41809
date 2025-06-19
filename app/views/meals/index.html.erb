@@ -2,45 +2,87 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>おすすめ料理と店舗</title>
+  <title>おすすめご飯</title>
   <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+      background: #fffaf4;
+    }
+    h2 {
+      text-align: center;
+    }
+    .meal-suggestion {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 24px;
+      font-weight: bold;
+      color: #e74c3c;
+    }
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 60%;
+      border-radius: 10px;
+    }
+    button {
+      display: block;
+      margin: 30px auto;
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    #results {
+      margin-top: 20px;
+    }
+    .shop {
+      background: #f2f2f2;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="title">あなたへのおすすめ</div>
-  <%= image_tag "ramen.PNG", alt: "豚骨ラーメン", class: "food-img" %>
-    <div class="food-name">豚骨ラーメン</div>
-    <button class="btn" onclick="showShops()">近くのお店を探す</button>
-    <div id="shopList" class="shop-list" style="display:none;"></div>
-  </div>
+
+  <h2>あなたにおすすめのごはんは…</h2>
+  <div class="meal-suggestion" id="mealName">とんこつラーメン</div>
+  <%# <img src="https://source.unsplash.com/600x400/?tonkotsu-ramen" alt="おすすめご飯の画像"> %>
+
+  <button onclick="searchNearbyShops()">近くのお店を探す</button>
+
+  <div id="results"></div>
 
   <script>
-    function showShops() {
-      // const results = document.getElementById('results');
+    // 仮の店データ（APIがまだない場合用）
+    const shops = [
+      { name: "一風堂 渋谷店", address: "東京都渋谷区神南1-3-13" },
+      { name: "ラーメン花月 嵐", address: "東京都渋谷区道玄坂2-10-12" },
+      { name: "博多天神", address: "東京都渋谷区宇田川町31-3" }
+    ];
 
-      const shops = [
-        { name: "一風堂 渋谷店", address: "東京都渋谷区神南1-3-13" },
-        { name: "ラーメン花月 嵐", address: "東京都渋谷区道玄坂2-10-12" },
-        { name: "博多天神", address: "東京都渋谷区宇田川町31-3" }
-      ];
-
-      //  results.innerHTML = "<h2>近くのお店</h2>" +
-      //   restaurants.map(r =>
-      //     `<h3>${r.name}</h3><p>${r.address}</p>`
-      //   ).join('');
-
-      const list = document.getElementById("shopList");
-      list.innerHTML = "";
+    function searchNearbyShops() {
+      const container = document.getElementById("results");
+      container.innerHTML = "<h3>おすすめ店舗:</h3>";
       shops.forEach(shop => {
-        const item = document.createElement("div");
-        item.className = "shop-item";
-        item.innerHTML = `<strong>${shop.name}</strong><br>${shop.address}`;
-        list.appendChild(item);
+        const div = document.createElement("div");
+        div.className = "shop";
+        div.innerHTML = `<strong>${shop.name}</strong><br>${shop.address}`;
+        container.appendChild(div);
       });
 
-      list.style.display = "block";
+      // 将来的にはここでOpenAI + Web検索 or Google Maps APIなどでリアルタイム取得
     }
   </script>
+
 </body>
 </html>

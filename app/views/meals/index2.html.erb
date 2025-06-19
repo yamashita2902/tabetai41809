@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>おすすめ料理と店舗</title>
+  <style>
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">あなたへのおすすめ</div>
+  <%= image_tag "ramen.PNG", alt: "豚骨ラーメン", class: "food-img" %>
+    <div class="food-name">豚骨ラーメン</div>
+    <button class="btn" onclick="showShops()">近くのお店を探す</button>
+    <div id="shopList" class="shop-list" style="display:none;"></div>
+  </div>
+
+  <script>
+    function showShops() {
+      // const results = document.getElementById('results');
+
+      const shops = [
+        { name: "一風堂 渋谷店", address: "東京都渋谷区神南1-3-13" },
+        { name: "ラーメン花月 嵐", address: "東京都渋谷区道玄坂2-10-12" },
+        { name: "博多天神", address: "東京都渋谷区宇田川町31-3" }
+      ];
+
+      //  results.innerHTML = "<h2>近くのお店</h2>" +
+      //   restaurants.map(r =>
+      //     `<h3>${r.name}</h3><p>${r.address}</p>`
+      //   ).join('');
+
+      const list = document.getElementById("shopList");
+      list.innerHTML = "";
+      shops.forEach(shop => {
+        const item = document.createElement("div");
+        item.className = "shop-item";
+        item.innerHTML = `<strong>${shop.name}</strong><br>${shop.address}`;
+        list.appendChild(item);
+      });
+
+      list.style.display = "block";
+    }
+  </script>
+</body>
+</html>
