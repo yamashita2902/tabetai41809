@@ -3,58 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>おすすめご飯</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 20px;
-      max-width: 700px;
-      margin: auto;
-      background: #fffaf4;
-    }
-    h2 {
-      text-align: center;
-    }
-    .meal-suggestion {
-      text-align: center;
-      margin: 30px 0;
-      font-size: 24px;
-      font-weight: bold;
-      color: #e74c3c;
-    }
-    img {
-      display: block;
-      margin: 0 auto;
-      width: 60%;
-      border-radius: 10px;
-    }
-    button {
-      display: block;
-      margin: 30px auto;
-      padding: 12px 24px;
-      font-size: 16px;
-      background-color: #3498db;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #2980b9;
-    }
-    #results {
-      margin-top: 20px;
-    }
-    .shop {
-      background: #f2f2f2;
-      margin: 10px 0;
-      padding: 10px;
-      border-radius: 8px;
-    }
-  </style>
+  <%= stylesheet_link_tag 'meals', media: 'all' %>
 </head>
 <body>
 
-  <h2>あなたにおすすめのごはんは…</h2>
+  <div class = suggestion-title>あなたにおすすめのごはんは…</div>
   <div class="meal-suggestion" id="mealName">とんこつラーメン</div>
   <%# <img src="https://source.unsplash.com/600x400/?tonkotsu-ramen" alt="おすすめご飯の画像"> %>
 
@@ -72,7 +25,7 @@
 
     function searchNearbyShops() {
       const container = document.getElementById("results");
-      container.innerHTML = "<h3>おすすめ店舗:</h3>";
+      container.innerHTML = "<div Class = suggestion-title>おすすめ店舗:</div>";
       shops.forEach(shop => {
         const div = document.createElement("div");
         div.className = "shop";

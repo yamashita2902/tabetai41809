@@ -1,46 +1,56 @@
 .body {
-  font-family: sans-serif;
-  background-color: #fdfbf6;
-  padding: 20px;
-}
-.container {
-  max-width: 400px;
-  margin: auto;
-  border: 1px solid #ddd;
-  padding: 20px;
-  border-radius: 12px;
-  background-color: #fff;
-}
-.title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-align: center;
-}
-.food-img {
-  width: 100%;
-  border-radius: 8px;
-}
-.food-name {
-  font-size: 20px;
-  text-align: center;
-  margin-top: 10px;
-}
-.btn {
-  display: block;
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px;
-  margin: 15px 0;
-  text-align: center;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.shop-list {
-  font-size: 16px;
-}
-.shop-item {
-  margin-bottom: 12px;
-}
+      font-family: sans-serif;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+      background: #fffaf4;
+      justify-content: center;
+
+    }
+    .suggestion-title {
+      text-align: center;
+      font-size: 36px;
+    }
+    .meal-suggestion {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 24px;
+      font-weight: bold;
+      color: #e74c3c;
+    }
+    /* img {
+      display: block;
+      margin: 0 auto;
+      width: 60%;
+      border-radius: 10px; */
+    
+    button {
+      display: block;
+      margin: 30px auto;
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    #results {
+      margin-top: 20px;
+      display: flex;
+      align-items: center; 
+      flex-direction: column;
+      
+    }
+    .shop {
+      background: #f2f2f2;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      width: 300px;
+    }
+  
